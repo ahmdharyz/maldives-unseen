@@ -1,6 +1,8 @@
 package com.example.maldivesunseen.ui
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
-class MaldivesUnseenApp(modifier: Modifier = Modifier) {
+@Composable
+fun MaldivesUnseenApp(modifier: Modifier = Modifier) {
 }
