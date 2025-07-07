@@ -6,6 +6,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.maldivesunseen.R
 
@@ -27,7 +28,24 @@ fun MaldivesUnseenApp(modifier: Modifier = Modifier) {
             navController = navController,
             startDestination = MaldivesUnseenApp.Home.name,
             modifier = modifier
-        )
+        ) {
+            composable(route = MaldivesUnseenApp.Home.name) {
+                HomeScreen()
+            }
+
+            composable(route = MaldivesUnseenApp.Categories.name) {
+                CategoriesScreen()
+
+            }
+
+            composable(route = MaldivesUnseenApp.CategoryDetail.name) {
+                CategoryDetailScreen()
+            }
+
+            composable(route = MaldivesUnseenApp.Recommendation.name) {
+                RecommendationScreen()
+            }
+        }
     }
 }
 
