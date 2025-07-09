@@ -12,11 +12,33 @@ import androidx.navigation.compose.rememberNavController
 import com.example.maldivesunseen.R
 
 // Is it necessary to create string values for the dynamic screens such as CategoryDetail and Recommendation?
-enum class MaldivesUnseenApp(@StringRes val title: Int) {
+enum class Destination(@StringRes val title: Int) {
     Home(title = R.string.app_name),
     Categories(title = R.string.category),
     CategoryDetail(title = R.string.category_detail),
     Recommendation(title = R.string.recommendation),
+}
+
+@Composable
+fun AppNavBar(
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = rememberNavController(),
+        startDestination = Destination.Home,
+        modifier = modifier
+    ) {
+        Destination.entries.forEach { destination ->
+            composable(destination.name) {
+                when (destination) {
+                    Destination.Home -> HomeScreen()
+                    Destination.Categories -> CategoriesScreen()
+                    Destination.CategoryDetail -> CategoryDetailScreen()
+                    Destination.Recommendation -> RecommendationScreen()
+                }
+            }
+        }
+    }
 }
 
 @Composable
@@ -27,28 +49,5 @@ fun MaldivesUnseenApp(
     Scaffold {
         paddingValues ->
         modifier.padding(paddingValues)
-
-        NavHost(
-            navController = navController,
-            startDestination = MaldivesUnseenApp.Home.name,
-            modifier = modifier
-        ) {
-            composable(route = MaldivesUnseenApp.Home.name) {
-                HomeScreen()
-            }
-            
-            composable(route = MaldivesUnseenApp.Categories.name) {
-                CategoriesScreen()
-
-            }
-
-            composable(route = MaldivesUnseenApp.CategoryDetail.name) {
-                CategoryDetailScreen()
-            }
-
-            composable(route = MaldivesUnseenApp.Recommendation.name) {
-                RecommendationScreen()
-            }
-        }
     }
 }
