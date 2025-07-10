@@ -22,10 +22,11 @@ enum class Destination(@StringRes val title: Int) {
 
 @Composable
 fun AppNavBar(
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     NavHost(
-        navController = rememberNavController(),
+        navController = navController,
         startDestination = Destination.Home,
         modifier = modifier
     ) {
