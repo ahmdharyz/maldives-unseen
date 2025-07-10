@@ -41,7 +41,6 @@ fun AppNavBar(
             composable(Destination.Recommendation.name) {
                 RecommendationScreen()
             }
-        }
     }
 }
 
@@ -52,7 +51,10 @@ fun MaldivesUnseenApp(
     ) {
     Scaffold {
         paddingValues ->
-        modifier.padding(paddingValues)
+        AppNavBar(
+            navController = navController,
+            modifier = modifier.padding(paddingValues)
+        )
     }
 }
 
