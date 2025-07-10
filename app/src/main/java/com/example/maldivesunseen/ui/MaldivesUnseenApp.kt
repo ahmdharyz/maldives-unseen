@@ -21,7 +21,7 @@ enum class Destination(@StringRes val title: Int) {
 }
 
 @Composable
-fun AppNavBar(
+fun AppNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
@@ -52,7 +52,7 @@ fun MaldivesUnseenApp(
     ) {
     Scaffold {
         paddingValues ->
-        AppNavBar(
+        AppNavHost(
             navController = navController,
             modifier = modifier.padding(paddingValues)
         )
