@@ -28,14 +28,17 @@ fun AppNavBar(
         startDestination = Destination.Home,
         modifier = modifier
     ) {
-        Destination.entries.forEach { destination ->
-            composable(destination.name) {
-                when (destination) {
-                    Destination.Home -> HomeScreen()
-                    Destination.Categories -> CategoriesScreen()
-                    Destination.CategoryDetail -> CategoryDetailScreen()
-                    Destination.Recommendation -> RecommendationScreen()
-                }
+            composable(Destination.Home.name) {
+                HomeScreen()
+            }
+            composable(Destination.Categories.name) {
+                CategoriesScreen()
+            }
+            composable(Destination.CategoryDetail.name) {
+                CategoryDetailScreen()
+            }
+            composable(Destination.Recommendation.name) {
+                RecommendationScreen()
             }
         }
     }
