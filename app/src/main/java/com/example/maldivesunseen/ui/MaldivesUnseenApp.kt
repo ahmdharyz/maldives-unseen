@@ -92,8 +92,11 @@ fun BottomNavigationBar(navController: NavHostController) {
                 icon = {
                     Icon(
                         imageVector = destination.icon ?: Icons.Default.Home,
-                        contentDescription =  destination.contentDescription.toString()
+                        contentDescription =  stringResource(destination.contentDescription ?: R.string.home_description)
                     )
+                },
+                label = {
+                    Text(stringResource(destination.label ?: R.string.home))
                 }
             )
         }
