@@ -66,7 +66,7 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Destination.Home,
+        startDestination = Destination.Home.route,
         modifier = modifier
     ) {
             composable(Destination.Home.route) {
