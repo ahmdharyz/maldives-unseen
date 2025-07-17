@@ -44,7 +44,7 @@ sealed class Destination(
     data object Categories: Destination(
         route = "Categories",
         label = R.string.category,
-        icon = Icons.AutoMirrored.Default.List, // TODO: Check if it's a bulleted list, if not add bulleted list icon
+        icon = Icons.AutoMirrored.Default.List,
         contentDescription = R.string.category_description
     )
 
