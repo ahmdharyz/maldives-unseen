@@ -10,7 +10,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,7 +20,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -82,7 +80,7 @@ fun BottomNavigationBar(navController: NavHostController) {
     val startDestination = Destination.Home
     var selectedDestination by rememberSaveable { mutableStateOf(startDestination.route) }
 
-    NavigationBar(windowInsets = NavigationBarDefaults.windowInsets) { // TODO: Check what happens when you remove windowInsets
+    NavigationBar(windowInsets = NavigationBarDefaults.windowInsets) { // QUESTION: Why do we need windowInsets?
         destinations.forEach { destination ->
             NavigationBarItem(
                 selected = selectedDestination == destination.route,
