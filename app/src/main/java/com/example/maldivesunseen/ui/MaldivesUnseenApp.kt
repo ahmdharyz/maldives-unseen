@@ -137,12 +137,14 @@ fun MaldivesUnseenApp(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController()
     ) {
-    Scaffold {
+    Scaffold(
+        bottomBar = { BottomNavigationBar(navController) },
+        modifier = modifier
+    ) {
         paddingValues ->
         AppNavHost(
             navController = navController,
             modifier = modifier.padding(paddingValues)
         )
-        BottomNavigationBar(navController)
     }
 }
