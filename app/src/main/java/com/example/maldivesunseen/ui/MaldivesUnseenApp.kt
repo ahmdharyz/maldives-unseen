@@ -81,6 +81,9 @@ fun AppNavHost(
             composable(Destination.Recommendation.route) {
                 RecommendationScreen()
             }
+            composable(Destination.Settings.route) {
+                SettingsScreen()
+            }
     }
 }
 
