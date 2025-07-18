@@ -140,10 +140,10 @@ fun MaldivesUnseenApp(
         bottomBar = { BottomNavigationBar(navController) },
         modifier = modifier
     ) {
-        paddingValues ->
+        innerPadding ->
         AppNavHost(
             navController = navController,
-            modifier = modifier.padding(paddingValues)
+            modifier = modifier.padding(innerPadding)
         )
     }
 }
