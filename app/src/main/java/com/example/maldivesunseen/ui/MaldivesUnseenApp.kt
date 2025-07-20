@@ -25,6 +25,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.maldivesunseen.R
 
 // Navigation destinations using sealed classes
@@ -136,6 +137,8 @@ fun MaldivesUnseenApp(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController()
     ) {
+    val BackStackEntry by navController.currentBackStackEntryAsState()
+
     Scaffold(
         bottomBar = { BottomNavigationBar(navController) },
         modifier = modifier
