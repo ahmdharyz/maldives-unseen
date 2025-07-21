@@ -108,23 +108,33 @@ fun MaldivesUnseenAppTopBar(
 }
 
 @Composable
-fun BottomNavigationBar(navController: NavHostController) {
+fun BottomNavigationBar(
+    currentScreen: String,
+    navController: NavHostController
+) {
     val destinations = listOf(
         Destination.Home,
         Destination.Categories,
         Destination.Settings
     )
 
-    val startDestination = Destination.Home
-    var selectedDestination by rememberSaveable { mutableStateOf(startDestination.route) }
+    var currentRoute by rememberSaveable { mutableStateOf(currentScreen) }
 
     NavigationBar(windowInsets = NavigationBarDefaults.windowInsets) { // QUESTION: Why do we need windowInsets?
         destinations.forEach { destination ->
             NavigationBarItem(
-                selected = selectedDestination == destination.route,
+                selected = currentScreen == destination.route,
                 onClick = {
-                    navController.navigate(destination.route)
-                    selectedDestination = destination.route
+                    navController.navigate(destination.route) {
+                        // Question: Should I use popUpTo? Would this be considered a circular navigation?
+                        // https://developer.android.com/guide/navigation/backstack/circular
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                    currentRoute = destination.route
                 },
                 icon = {
                     Icon(
@@ -185,7 +195,12 @@ fun MaldivesUnseenApp(
                 modifier = modifier
             )
         },
-        bottomBar = { BottomNavigationBar(navController) },
+        bottomBar = {
+            BottomNavigationBar(
+                currentScreen = currentScreen,
+                navController = navController
+            )
+        },
         modifier = modifier
     ) {
         innerPadding ->
